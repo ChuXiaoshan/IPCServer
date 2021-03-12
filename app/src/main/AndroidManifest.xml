@@ -3,6 +3,7 @@
     package="com.cxsplay.ipcserver">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -38,6 +39,17 @@
             android:process=":remoteBook">
             <intent-filter>
                 <action android:name="com.cxsplay.ipcservice.BookManagerService" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".TCPServerService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":remoteTCP">
+            <intent-filter>
+                <action android:name="com.cxsplay.ipcservice.TCPServerService" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </service>
